@@ -14,6 +14,13 @@
     "text": "Hello. My name is Mason Dover and I am a student at the College of Journalism and Mass Communications at UNL."
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Latest posts",
+    "section": "",
+    "text": "The most difficult holes in the PGA over the last 5 years.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 14, 2024\n\n\nMason Dover\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 1, 2024\n\n\nMason Dover\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nApr 1, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 29, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -21,11 +28,11 @@
     "text": "About this blog"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Latest posts",
+    "objectID": "posts/hardest-pga-holes/index.html",
+    "href": "posts/hardest-pga-holes/index.html",
+    "title": "The most difficult holes in the PGA over the last 5 years.",
     "section": "",
-    "text": "Introduction\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 1, 2024\n\n\nMason Dover\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nApr 1, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMar 29, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Test\n\n\nCode\nlibrary(tidyverse)\nlibrary(ggrepel)\n\nPGA &lt;- read_csv(\"PGAToughestHoles2024 - Sheet1 (1).csv\") |&gt;\n  mutate(\n    HoleYear = paste(HOLE,COURSE, YEAR)\n  )\n\nPGA24 &lt;- PGA |&gt;\n  filter(YEAR == \"2024\") \n\nPGA23 &lt;- PGA |&gt;\n  filter(YEAR == \"2023\")\n\nPGA22 &lt;- PGA |&gt;\n  filter(YEAR == \"2022\")\n\nPGA21 &lt;- PGA |&gt;\n  filter(YEAR == \"2021\")\n\nPGA20 &lt;- PGA |&gt;\n  filter(YEAR == \"2020\")\n\nBadPar4 &lt;- PGA |&gt;\n  filter(AVG &gt; 4.3, YARDS &lt; 430) \n\nBadPar5 &lt;- PGA |&gt;\n  filter(AVG &gt; 5.0, YARDS &lt; 550)\n\nBadPar3 &lt;- PGA |&gt;\n  filter(AVG &gt; 3.5, YARDS &lt; 230)\n\nBadP4 &lt;- PGA |&gt;\n  filter(AVG &gt; 4.6, YARDS &lt; 500)\n\nBad &lt;- bind_rows(BadPar4,BadPar5,BadPar3, BadP4)\n\nggplot() + \n  geom_point(data=PGA, aes(x=YARDS, y=AVG), color=\"lightgrey\") +\n  geom_smooth(data=PGA, aes(x=YARDS, y=AVG), method=\"lm\") +\n  geom_point(data=Bad, aes(x=YARDS, y=AVG), color=\"red\") +\n  geom_text_repel(data=Bad, aes(x=YARDS, y=AVG, label=HoleYear)) +\n  labs(\n    x=\"Total Yards\", \n    y=\"Average Score\", \n    title=\"Scorecards Turn Ugly\", \n    subtitle=\"Over the last 5 years, dreams are crushed when professional golfers play these holes.\",\n    caption=\"Source: PGATour.com | By Mason Dover\"\n    ) +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(size = 20, face = \"bold\"),\n    axis.title = element_text(size = 10), \n    plot.subtitle = element_text(size=14), \n    panel.grid.minor = element_blank(),\n    plot.title.position = \"plot\"\n    )"
   },
   {
     "objectID": "posts/post-with-code/index.html",
